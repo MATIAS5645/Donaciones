@@ -80,17 +80,18 @@ WSGI_APPLICATION = 'prjDonaciones.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=f"mysql://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASSWORD')}@{os.environ.get('DB_HOST')}:{os.environ.get('DB_PORT')}/{os.environ.get('DB_NAME')}",
-        conn_max_age=600,
-        
-    )
-}
-
-
-DATABASES['default']['OPTIONS'] = {
-    'ssl': {
-        'ca': '/etc/ssl/certs/ca-certificates.crt',
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Donaciones',  # O el nombre de tu BD
+        'USER': '41EaSxCDkY4FxET.root', # Ej: 4Me2...root
+        'PASSWORD': 'grYjXwED5ZoM6UZY',
+        'HOST': 'gateway01.us-east-1.prod.aws.tidbcloud.com', # Tu host
+        'PORT': '4000',
+        'OPTIONS': {
+            'ssl': {
+                'ca': '/etc/ssl/certs/ca-certificates.crt',
+            }
+        },
     }
 }
 
