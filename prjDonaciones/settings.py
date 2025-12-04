@@ -83,8 +83,15 @@ DATABASES = {
     'default': dj_database_url.config(
         default=f"mysql://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASSWORD')}@{os.environ.get('DB_HOST')}:{os.environ.get('DB_PORT')}/{os.environ.get('DB_NAME')}",
         conn_max_age=600,
-        ssl_require=True  # TiDB requiere SSL
+        
     )
+}
+
+
+DATABASES['default']['OPTIONS'] = {
+    'ssl': {
+        'ca': '/etc/ssl/certs/ca-certificates.crt',
+    }
 }
 
 # Password validation
