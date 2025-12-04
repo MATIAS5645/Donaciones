@@ -2,6 +2,16 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+    /* Estilo para el contenedor del mapa */
+    #mapaSeguimiento { 
+        height: 400px; 
+        width: 100%; 
+        border-radius: 8px;
+    }
+</style>
+
 {% if messages %}
     <div class="row">
         <div class="col-md-12">
@@ -40,5 +50,36 @@
         </div>
     </div>
 </div>
+
+<div class="row mt-5 mb-5">
+    <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Nuestra Ubicación Principal</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Aquí recibimos y procesamos todas las ayudas.</p>
+                <div id="mapaSeguimiento"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Inicializar el mapa centrado en Santiago (o coordenadas por defecto)
+    var map = L.map('mapaSeguimiento').setView([-33.4489, -70.6693], 13);
+
+    // Cargar capa de OpenStreetMap
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // Agregar un marcador en el centro
+    L.marker([-33.4489, -70.6693]).addTo(map)
+        .bindPopup('<b>Centro de Acopio Principal</b><br>Santiago Centro')
+        .openPopup();
+</script>
 
 {% endblock %}
