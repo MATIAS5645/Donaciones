@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'prjDonaciones.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Donaciones',  # O el nombre de tu BD
+        'NAME': 'Test',  # O el nombre de tu BD
         'USER': '41EaSxCDkY4FxET.root', # Ej: 4Me2...root
         'PASSWORD': 'grYjXwED5ZoM6UZY',
         'HOST': 'gateway01.us-east-1.prod.aws.tidbcloud.com', # Tu host
