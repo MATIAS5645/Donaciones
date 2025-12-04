@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,7 +127,7 @@ USE_TZ = True
 
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -147,3 +148,12 @@ RECAPTCHA_PRIVATE_KEY = '6Lf5dx4sAAAAAHSgifDFDZpVNp45qQNe0cZPuv7c'
 OS_ENV = os.environ.get('OS_ENV', 'development')
 if OS_ENV == 'development':
     RECAPTCHA_use_ssl = False
+
+
+
+# --- AGREGA ESTO ---
+# Esta es la carpeta donde Render guardará los archivos recolectados
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Configuración recomendada para Whitenoise (ya que lo tienes instalado)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
