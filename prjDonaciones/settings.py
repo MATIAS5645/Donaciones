@@ -165,3 +165,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Configuración recomendada para Whitenoise (ya que lo tienes instalado)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+ALLOWED_HOSTS = ['donaciones-9osb.onrender.com', 'localhost', '127.0.0.1']
